@@ -1,0 +1,14 @@
+currency:
+  integration-api-url: https://open.er-api.com/v6/latest/
+  conversion-percentage-adjustment: 0.98
+  rounding-scale: 4
+
+server:
+  port: 8101
+
+spring:
+  application:
+    name: currency-exchange-service
+eureka:
+  client:
+    enabled: false
