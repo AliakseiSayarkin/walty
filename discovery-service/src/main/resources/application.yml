@@ -1,0 +1,19 @@
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${spring.application.name}:${server.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    max-threads-for-peer-replication: 0
+    peer-node-total-connections-per-host: 0
+  instance:
+    hostname: ${spring.application.name}
+
+server:
+  port: 8102
+
+spring:
+  application:
+    name: discovery-service

@@ -1,17 +1,20 @@
 version: '3.1'
 
 services:
+  discovery-service:
+    container_name: discovery-service
+    build:
+      context: ./discovery-service
+    ports:
+      - "8102:8102"
+    healthcheck:
+      test: "curl --fail --silent discovery-service:8102/actuator/health | grep UP || exit 1"
+      interval: 2s
+      timeout: 1s
+      retries: 5
+
   currency-exchange-service:
-    container_name: currency-exchange-service
     build:
       context: ./currency-exchange-service
     ports:
       - "8101:8101"
-    depends_on:
-      discovery-service:
-        condition: service_healthy
-    healthcheck:
-      test: "curl --fail --silent currency-exchange-service:8101/actuator/health | grep UP || exit 1"
-      interval: 2s
-      timeout: 1s
-      retries: 5
