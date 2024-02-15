@@ -18,3 +18,16 @@ eureka:
       defaultZone: http://discovery-service:8102/eureka/
       links:
         - discovery-service
+    enabled: false
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name},%X{traceId:-},%X{spanId:-}]"
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://localhost:8101/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1

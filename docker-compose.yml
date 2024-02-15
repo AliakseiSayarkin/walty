@@ -18,3 +18,13 @@ services:
       context: ./currency-exchange-service
     ports:
       - "8101:8101"
+
+  zipkin:
+    image: ghcr.io/openzipkin/zipkin-slim:${TAG:-latest}
+    container_name: zipkin
+    environment:
+      - STORAGE_TYPE=mem
+      - MYSQL_HOST=mysql
+    ports:
+      - "9411:9411"
+
