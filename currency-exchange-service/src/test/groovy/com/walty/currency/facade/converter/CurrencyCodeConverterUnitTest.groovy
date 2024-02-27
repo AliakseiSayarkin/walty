@@ -35,7 +35,7 @@ class CurrencyCodeConverterUnitTest extends Specification {
     CurrencyCodeConverter currencyCodeConverter
 
     @Unroll
-    void "should correctly convert #currencyCode to #currencyEnum"() {
+    void "should convert #currencyCode to #currencyEnum"() {
         expect:
         currencyEnum == currencyCodeConverter.convert(currencyCode)
 
@@ -44,16 +44,18 @@ class CurrencyCodeConverterUnitTest extends Specification {
         currencyEnum << [USD, EUR, BYN, RUB]
     }
 
-    void "should throw NullPointerException given null currency code"() {
+    void "should throw NullPointerException when convert() given null currency code"() {
         when:
         currencyCodeConverter.convert(null)
+
         then:
         thrown NullPointerException
     }
 
-    void "should throw IllegalArgumentException given unknown currency code"() {
+    void "should throw IllegalArgumentException when convert() given unknown currency code"() {
         when:
         currencyCodeConverter.convert(UNKNOWN_CODE)
+
         then:
         thrown IllegalArgumentException
     }

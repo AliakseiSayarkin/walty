@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import static java.util.Objects.requireNonNull;
 
 @Component
-public class CurrencyDataConverter implements Converter<CurrencyModel, CurrencyDTO> {
+public class CurrencyDTOConverter implements Converter<CurrencyModel, CurrencyDTO> {
 
     @Override
     public CurrencyDTO convert(@Nonnull CurrencyModel source) {

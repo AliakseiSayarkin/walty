@@ -104,7 +104,7 @@ class CurrencyRatesJsonConverterUnitTest extends Specification {
     CurrencyRatesJsonConverter currencyRatesJsonConverter
 
     @Unroll
-    void  "should return currency exchange given valid successful #json of a #currency"() {
+    void "should return currency exchange given valid successful #json of a #currency"() {
         given:
         var currencyOptional = currencyRatesJsonConverter.convert(json)
 

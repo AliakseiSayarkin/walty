@@ -13,7 +13,7 @@ and perform currency conversions.
    #### Endpoint:
         GET /v1/currency/exchange/{currencyToBuyCode}
    #### Parameters:
-    * currencyToBuyCode currency you want to buy (convert to)
+    * currencyToBuyCode – currency you want to buy (convert to)
    #### Body:
         {
             "code" : "BYN", <- currency to sell code

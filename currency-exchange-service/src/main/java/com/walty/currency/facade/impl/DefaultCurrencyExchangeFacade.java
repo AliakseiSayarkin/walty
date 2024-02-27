@@ -3,7 +3,7 @@ package com.walty.currency.facade.impl;
 import com.walty.currency.Currency;
 import com.walty.currency.facade.CurrencyExchangeFacade;
 import com.walty.currency.facade.converter.CurrencyCodeConverter;
-import com.walty.currency.facade.converter.CurrencyDataConverter;
+import com.walty.currency.facade.converter.CurrencyDTOConverter;
 import com.walty.currency.facade.converter.CurrencyModelConverter;
 import com.walty.currency.service.CurrencyExchangeService;
 import com.walty.currency.service.integration.CurrencyExchangeIntegrationService;
@@ -32,7 +32,7 @@ public class DefaultCurrencyExchangeFacade implements CurrencyExchangeFacade {
     private final CurrencyExchangeService currencyExchangeService;
     private final CurrencyExchangeIntegrationService currencyExchangeIntegrationService;
 
-    private final CurrencyDataConverter currencyDataConverter;
+    private final CurrencyDTOConverter currencyDTOConverter;
     private final CurrencyCodeConverter currencyCodeConverter;
     private final CurrencyModelConverter currencyModelConverter;
 
@@ -55,7 +55,7 @@ public class DefaultCurrencyExchangeFacade implements CurrencyExchangeFacade {
     private Optional<CurrencyDTO> convertCurrency(CurrencyDTO currencyToSell, String currencyToBuyCode, CurrencyExchangeRateDTO currencyExchangeRate) {
         return currencyExchangeService
                 .exchangeCurrency(currencyModelConverter.convert(currencyToSell), currencyCodeConverter.convert(currencyToBuyCode), currencyExchangeRate)
-                .map(currencyDataConverter::convert);
+                .map(currencyDTOConverter::convert);
     }
 
     @Override

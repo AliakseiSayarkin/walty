@@ -47,8 +47,10 @@ class TransactionRecordControllerIntegrationTest extends Specification {
 
     @Autowired
     MockMvc mvc
+
     @Autowired
     ObjectMapper mapper
+
     @Autowired
     MongoTemplate mongoTemplate
 

@@ -12,7 +12,7 @@ class RoundingUtilUnitTest extends Specification {
     private RoundingUtil roundingUtil
 
     @Unroll
-    void "should correctly round currency #value"() {
+    void "should round currency #value"() {
         given:
         var roundedValue = roundingUtil.round(value as double)
 

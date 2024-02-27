@@ -3,7 +3,7 @@ package com.walty.currency.facade.impl
 import com.blogspot.toomuchcoding.spock.subjcollabs.Collaborator
 import com.blogspot.toomuchcoding.spock.subjcollabs.Subject
 import com.walty.currency.facade.converter.CurrencyCodeConverter
-import com.walty.currency.facade.converter.CurrencyDataConverter
+import com.walty.currency.facade.converter.CurrencyDTOConverter
 import com.walty.currency.facade.converter.CurrencyModelConverter
 import com.walty.currency.service.CurrencyExchangeService
 import com.walty.currency.service.integration.CurrencyExchangeIntegrationService
@@ -42,7 +42,7 @@ class DefaultCurrencyExchangeFacadeUnitTest extends Specification {
     @Collaborator
     RoundingUtil roundingUtil = Mock()
     @Collaborator
-    CurrencyDataConverter currencyDataConverter = Mock()
+    CurrencyDTOConverter currencyDataConverter = Mock()
     @Collaborator
     CurrencyCodeConverter currencyCodeConverter = Mock()
     @Collaborator
@@ -81,7 +81,7 @@ class DefaultCurrencyExchangeFacadeUnitTest extends Specification {
         roundingUtil.round(RUB_EXCHANGED_VALUE) >> RUB_EXCHANGED_VALUE
     }
 
-    void "should correctly exchange BYN to USD"() {
+    void "should exchange BYN to USD"() {
         when:
         var result = currencyExchangeFacade.exchangeCurrency(CURRENCY_DATA_GIVEN, BYN.toString())
 
@@ -99,7 +99,7 @@ class DefaultCurrencyExchangeFacadeUnitTest extends Specification {
         !result.isPresent()
     }
 
-    void "should return empty currency given null currency"() {
+    void "should return empty currency given null currency to sell"() {
         when:
         var result = currencyExchangeFacade.exchangeCurrency(null, BYN.toString())
 
@@ -116,9 +116,9 @@ class DefaultCurrencyExchangeFacadeUnitTest extends Specification {
         !result.isPresent()
     }
 
-    void "should correctly create currency values given valid currency to sell"() {
+    void "should create currency values given valid currency to sell"() {
         when:
-        var result  = currencyExchangeFacade.createCurrencyValues(CURRENCY_DATA_GIVEN)
+        var result = currencyExchangeFacade.createCurrencyValues(CURRENCY_DATA_GIVEN)
 
         then:
         result.isPresent()

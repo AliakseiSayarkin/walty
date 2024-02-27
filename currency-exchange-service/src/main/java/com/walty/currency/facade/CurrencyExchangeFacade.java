@@ -8,6 +8,5 @@ import java.util.Optional;
 public interface CurrencyExchangeFacade {
 
     Optional<CurrencyDTO> exchangeCurrency(CurrencyDTO currencyToSell, String currencyToBuyCode);
-
     Optional<CurrencyValuesDTO> createCurrencyValues(CurrencyDTO currencyToSell);
 }
