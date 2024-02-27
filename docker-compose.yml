@@ -18,3 +18,30 @@ services:
       context: ./currency-exchange-service
     ports:
       - "8101:8101"
+
+  transaction-record-service_db:
+    image: mongo:5.0.2
+    command: mongod --port 8103
+    ports:
+      - "8103:8103"
+    volumes:
+      - "transaction-record-service_data:/data/transaction-record-service_data"
+
+  transaction-record-service:
+    build: ./transaction-record-service
+    ports:
+      - "8104:8104"
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+      transaction-record-service_db:
+        condition: service_started
+    healthcheck:
+      test: "curl --fail --silent transaction-record-service:8104/actuator/health | grep UP || exit 1"
+      interval: 2s
+      timeout: 1s
+      retries: 5
+
+volumes:
+  transaction-record-service_data:
+
