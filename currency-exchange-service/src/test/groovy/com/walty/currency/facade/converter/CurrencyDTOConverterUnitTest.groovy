@@ -15,20 +15,20 @@ class CurrencyDTOConverterUnitTest extends Specification {
     var VALID_CURRENCY = new CurrencyModel(USD, VALUE)
 
     @Autowired
-    CurrencyDataConverter currencyDataConverter
+    CurrencyDTOConverter currencyDTOConverter
 
-    void "should convert valid currency"() {
+    void "should convert currency"() {
         when:
-        var currency = currencyDataConverter.convert(VALID_CURRENCY)
+        var currency = currencyDTOConverter.convert(VALID_CURRENCY)
 
         then:
         currency.getValue() == VALUE
         currency.getCode() == USD.toString()
     }
 
-    void "should throw NullPointerException given null currency"() {
+    void "should throw NullPointerException when convert() given null currency"() {
         when:
-        currencyDataConverter.convert(null)
+        currencyDTOConverter.convert(null)
         then:
         thrown NullPointerException
     }

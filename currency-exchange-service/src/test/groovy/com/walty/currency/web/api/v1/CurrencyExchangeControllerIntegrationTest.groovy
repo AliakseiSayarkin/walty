@@ -34,10 +34,11 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
 
     @Autowired
     MockMvc mvc
+
     @Autowired
     ObjectMapper mapper
 
-    void "should correctly convert BYN to USD"() {
+    void "should convert BYN to USD"() {
         when:
         var currencyToSell = new CurrencyDTO(BYN.toString(), VALUE)
 
@@ -54,7 +55,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         convertedCurrency.getValue() > 0
     }
 
-    void "should correctly convert BYN to RUB"() {
+    void "should convert BYN to RUB"() {
         when:
         var currencyToSell = new CurrencyDTO(BYN.toString(), VALUE)
 
@@ -71,7 +72,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         convertedCurrency.getValue() > 0
     }
 
-    void "should correctly convert BYN to EUR"() {
+    void "should convert BYN to EUR"() {
         when:
         var currencyToSell = new CurrencyDTO(BYN.toString(), VALUE)
 
@@ -88,7 +89,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         convertedCurrency.getValue() > 0
     }
 
-    void "should correctly create currency values for USD"() {
+    void "should create currency values for USD"() {
         when:
         var currencyToSell = new CurrencyDTO(USD.toString(), VALUE)
 
@@ -107,7 +108,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         convertedCurrency.getRub() > 0
     }
 
-    void "should correctly create currency values for EUR"() {
+    void "should create currency values for EUR"() {
         when:
         var currencyToSell = new CurrencyDTO(EUR.toString(), VALUE)
 
@@ -126,7 +127,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         convertedCurrency.getRub() > 0
     }
 
-    void "should correctly create currency values for BYN"() {
+    void "should create currency values for BYN"() {
         when:
         var currencyToSell = new CurrencyDTO(BYN.toString(), VALUE)
 
@@ -145,7 +146,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         convertedCurrency.getRub() > 0
     }
 
-    void "should correctly create currency values for RUB"() {
+    void "should create currency values for RUB"() {
         when:
         var currencyToSell = new CurrencyDTO(RUB.toString(), VALUE)
 

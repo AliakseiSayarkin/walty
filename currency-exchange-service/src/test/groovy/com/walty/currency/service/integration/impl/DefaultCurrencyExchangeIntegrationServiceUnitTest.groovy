@@ -22,6 +22,7 @@ class DefaultCurrencyExchangeIntegrationServiceUnitTest extends Specification {
 
     @Autowired
     DefaultCurrencyExchangeIntegrationService currencyExchangeIntegrationService
+
     @Autowired
     private Converter<String, Optional<CurrencyExchangeRateDTO>> converter
 

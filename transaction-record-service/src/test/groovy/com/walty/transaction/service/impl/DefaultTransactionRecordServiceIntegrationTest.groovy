@@ -27,8 +27,10 @@ class DefaultTransactionRecordServiceIntegrationTest extends Specification {
 
     @Autowired
     MongoTemplate mongoTemplate
+
     @Autowired
     TransactionRecordValidator transactionRecordValidator
+
     @Autowired
     DefaultTransactionRecordService defaultTransactionRecordService
 

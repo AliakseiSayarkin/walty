@@ -17,7 +17,7 @@ class CurrencyModelConverterUnitTest extends Specification {
     @Autowired
     CurrencyModelConverter currencyModelConverter
 
-    void "should convert valid currency"() {
+    void "should convert currency"() {
         when:
         var currency = currencyModelConverter.convert(VALID_CURRENCY)
 
@@ -26,7 +26,7 @@ class CurrencyModelConverterUnitTest extends Specification {
         currency.getCode() == USD
     }
 
-    void "should throw NullPointerException given null currency"() {
+    void "should throw NullPointerException when when convert() given null currency"() {
         when:
         currencyModelConverter.convert(null)
         then:

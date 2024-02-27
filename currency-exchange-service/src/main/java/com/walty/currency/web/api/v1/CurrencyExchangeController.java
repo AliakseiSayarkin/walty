@@ -21,7 +21,7 @@ public class CurrencyExchangeController {
 
     @GetMapping("/exchange/{currencyToBuyCode}")
     public ResponseEntity<CurrencyDTO> exchangeCurrency(@RequestBody @Valid CurrencyDTO currencyToSell,
-                                                       @PathVariable @ValidCurrency String currencyToBuyCode) {
+                                                        @PathVariable @ValidCurrency String currencyToBuyCode) {
         return ResponseEntity.of(currencyExchangeFacade.exchangeCurrency(currencyToSell, currencyToBuyCode));
     }
 

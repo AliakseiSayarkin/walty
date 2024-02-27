@@ -20,7 +20,7 @@ class CurrencyExchangeControllerUnitTest extends Specification {
     @Subject
     CurrencyExchangeController currencyExchangeController
 
-    void "should return not found http code when convertCurrency() given not working integration service"() {
+    void "should return 404 Not Found when convertCurrency() given not working integration service"() {
         given:
         var currencyToSell = new CurrencyDTO("BYN", CURRENCY_VALUE)
         currencyExchangeFacade.exchangeCurrency(currencyToSell, USD.toString()) >> Optional.empty()
@@ -32,7 +32,7 @@ class CurrencyExchangeControllerUnitTest extends Specification {
         response.getStatusCode().is4xxClientError()
     }
 
-    void "should return not found http code when createCurrencyValues() given not working integration service"() {
+    void "should return 404 Not Found when createCurrencyValues() given not working integration service"() {
         given:
         var currencyToSell = new CurrencyDTO("BYN", CURRENCY_VALUE)
         currencyExchangeFacade.createCurrencyValues(currencyToSell) >> Optional.empty()

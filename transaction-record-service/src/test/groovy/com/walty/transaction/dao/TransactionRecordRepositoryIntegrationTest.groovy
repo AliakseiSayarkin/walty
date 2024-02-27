@@ -25,6 +25,7 @@ class TransactionRecordRepositoryIntegrationTest extends Specification {
 
     @Autowired
     MongoTemplate mongoTemplate
+
     @Autowired
     TransactionRecordRepository transactionRecordRepository
 

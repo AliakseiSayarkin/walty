@@ -26,10 +26,9 @@ public class DefaultCurrencyExchangeService implements CurrencyExchangeService {
     @NonNull
     private RoundingUtil roundingUtil;
 
-
     @Override
     public Optional<CurrencyModel> exchangeCurrency(CurrencyModel currencyToSell, Currency currencyToBuy, CurrencyExchangeRateDTO exchangeRate) {
-        if(isNull(currencyToSell) || isNull(currencyToBuy) || isNull(exchangeRate)) {
+        if (isNull(currencyToSell) || isNull(currencyToBuy) || isNull(exchangeRate)) {
             return Optional.empty();
         }
 

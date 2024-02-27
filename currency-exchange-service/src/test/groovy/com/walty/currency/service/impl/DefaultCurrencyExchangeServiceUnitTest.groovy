@@ -30,7 +30,7 @@ class DefaultCurrencyExchangeServiceUnitTest extends Specification {
     DefaultCurrencyExchangeService currencyExchangeService
 
     @Unroll
-    void "should correctly exchange #currencyToSellCode to #currencyToBuy given #exchangeTate"() {
+    void "should exchange #currencyToSellCode to #currencyToBuy given #exchangeTate"() {
         given:
         var currencyToSell = new CurrencyModel(currencyToSellCode, CURRENCY_VALUE)
         var currencyToBuyCode = currencyToBuy
