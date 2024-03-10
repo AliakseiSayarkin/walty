@@ -19,7 +19,7 @@ configurations {
 }
 
 bootJar {
-    archiveFileName = "currency-exchange-service.jar"
+    archiveFileName = "telegram-bot-service.jar"
 }
 
 repositories {
@@ -30,13 +30,16 @@ dependencies {
     implementation platform('org.apache.groovy:groovy-bom:4.0.18')
 
     implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'javax.validation:validation-api:1.1.0.Final'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.1.0'
+
+    implementation 'javax.validation:validation-api:1.1.0.Final'
+
+    implementation 'com.github.pengrad:java-telegram-bot-api:7.1.0'
 
     compileOnly 'org.projectlombok:lombok'
 
@@ -46,10 +49,12 @@ dependencies {
 
     testImplementation("org.spockframework:spock-core:2.4-M1-groovy-4.0") { exclude group: "org.codehaus.groovy", module: "groovy-all" }
     testImplementation 'org.spockframework:spock-spring:2.4-M1-groovy-4.0'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
     testImplementation 'com.blogspot.toomuchcoding:spock-subjects-collaborators-extension:3.0.0'
 }
 
 test {
-   useJUnitPlatform()
+    useJUnitPlatform()
 }
