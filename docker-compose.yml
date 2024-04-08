@@ -7,6 +7,8 @@ services:
       context: ./discovery-service
     ports:
       - "8102:8102"
+    networks:
+      - backend
     healthcheck:
       test: "curl --fail --silent discovery-service:8102/actuator/health | grep UP || exit 1"
       interval: 2s
@@ -18,6 +20,8 @@ services:
       context: ./currency-exchange-service
     ports:
       - "8101:8101"
+    networks:
+      - backend
     depends_on:
       discovery-service:
         condition: service_healthy
@@ -34,11 +38,15 @@ services:
       - "8103:8103"
     volumes:
       - "transaction-record-service_data:/data/transaction-record-service_data"
+    networks:
+      - backend
 
   transaction-record-service:
     build: ./transaction-record-service
     ports:
       - "8104:8104"
+    networks:
+      - backend
     depends_on:
       discovery-service:
         condition: service_healthy
@@ -49,6 +57,28 @@ services:
       interval: 2s
       timeout: 1s
       retries: 5
+
+  telegram-bot-service:
+    hostname: telegram-bot-service
+    build: ./telegram-bot-service
+    ports:
+      - "8105:8105"
+    networks:
+      - backend
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+      currency-exchange-service:
+        condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent telegram-bot-service:8105/actuator/health | grep UP || exit 1"
+      interval: 2s
+      timeout: 1s
+      retries: 5
+
+networks:
+  backend:
+    driver: bridge
 
 volumes:
   transaction-record-service_data:

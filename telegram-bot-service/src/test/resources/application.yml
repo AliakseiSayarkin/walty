@@ -1,0 +1,29 @@
+telegram:
+  integration:
+    retry: 3
+    currency-exchange:
+      service-name: currency-exchange-service
+      create-currency-values-url: /v1/currency/values
+    transaction-record:
+      service-name: transaction-record-service
+      get-transaction-records-url: /v1/transaction/date/current/{telegramChatId}
+      save-transaction-records-url: /v1/transaction
+      delete-all-transaction-records-url: /v1/transaction/telegram/chat/id/{telegramChatId}
+      delete-transaction-record-by-id-url: /v1/transaction/id/{id}
+  bot:
+    username: dummy-username
+    token: dummy-token
+    should-start: false
+
+server:
+  port: 8105
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: telegram-bot-service
+
+eureka:
+  client:
+    enabled: false
