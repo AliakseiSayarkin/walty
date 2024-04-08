@@ -1,6 +1,6 @@
 package com.walty.currency.facade.impl;
 
-import com.walty.currency.Currency;
+import com.walty.currency.config.Currency;
 import com.walty.currency.facade.CurrencyExchangeFacade;
 import com.walty.currency.facade.converter.CurrencyCodeConverter;
 import com.walty.currency.facade.converter.CurrencyDTOConverter;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static com.walty.currency.Currency.*;
+import static com.walty.currency.config.Currency.*;
 import static java.lang.Double.parseDouble;
 import static java.util.Objects.isNull;
 

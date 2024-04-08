@@ -1,6 +1,6 @@
 package com.walty.currency.service.integration.converter
 
-import com.walty.currency.Currency
+import com.walty.currency.config.Currency
 import com.walty.currency.service.integration.dto.CurrencyExchangeRateDTO
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -8,7 +8,7 @@ import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static com.walty.currency.Currency.*
+import static com.walty.currency.config.Currency.*
 
 @SpringBootTest
 class CurrencyRatesJsonConverterUnitTest extends Specification {

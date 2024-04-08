@@ -1,6 +1,6 @@
 package com.walty.currency.facade.converter;
 
-import com.walty.currency.Currency;
+import com.walty.currency.config.Currency;
 import jakarta.annotation.Nonnull;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
 package com.walty.currency.web.validator;
 
-import com.walty.currency.Currency;
+import com.walty.currency.config.Currency;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

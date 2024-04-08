@@ -1,7 +1,7 @@
 package com.walty.currency.service.integration.dto;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
-import com.walty.currency.Currency;
+import com.walty.currency.config.Currency;
 import lombok.Data;
 
 import java.util.EnumMap;
@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-import static com.walty.currency.Currency.*;
+import static com.walty.currency.config.Currency.*;
 
 @Data
 public class CurrencyExchangeRateDTO {

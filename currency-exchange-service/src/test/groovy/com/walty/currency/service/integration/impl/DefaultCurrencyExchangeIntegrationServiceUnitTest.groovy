@@ -1,6 +1,6 @@
 package com.walty.currency.service.integration.impl
 
-import com.walty.currency.Currency
+import com.walty.currency.config.Currency
 import com.walty.currency.service.integration.dto.CurrencyExchangeRateDTO
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Mono
 import spock.lang.Specification
 
-import static com.walty.currency.Currency.*
+import static com.walty.currency.config.Currency.*
 import static io.netty.util.internal.StringUtil.EMPTY_STRING
 
 @SpringBootTest

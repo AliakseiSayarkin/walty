@@ -8,7 +8,7 @@ import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static com.walty.currency.Currency.*
+import static com.walty.currency.config.Currency.*
 
 @SpringBootTest
 class DefaultCurrencyExchangeServiceUnitTest extends Specification {

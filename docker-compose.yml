@@ -3,6 +3,7 @@ version: '3.1'
 services:
   discovery-service:
     container_name: discovery-service
+    hostname: discovery-service
     build:
       context: ./discovery-service
     ports:
@@ -42,16 +43,17 @@ services:
       - backend
 
   transaction-record-service:
-    build: ./transaction-record-service
+    build:
+      context: ./transaction-record-service
     ports:
       - "8104:8104"
     networks:
       - backend
     depends_on:
-      discovery-service:
-        condition: service_healthy
       transaction-record-service_db:
         condition: service_started
+      discovery-service:
+        condition: service_healthy
     healthcheck:
       test: "curl --fail --silent transaction-record-service:8104/actuator/health | grep UP || exit 1"
       interval: 2s
@@ -60,7 +62,8 @@ services:
 
   telegram-bot-service:
     hostname: telegram-bot-service
-    build: ./telegram-bot-service
+    build:
+      context: ./telegram-bot-service
     ports:
       - "8105:8105"
     networks:

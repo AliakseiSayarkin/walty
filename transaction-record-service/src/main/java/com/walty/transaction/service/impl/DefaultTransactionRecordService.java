@@ -7,6 +7,7 @@ import com.walty.transaction.service.mapper.TransactionRecordValidFieldsMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.*;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,8 @@ public class DefaultTransactionRecordService implements TransactionRecordService
     private static final String NOT_FOUND_TRANSACTION_RECORD_ERROR_MESSAGE = "Transaction record with Id '%s' not found";
     private static final String NOT_FOUND_TELEGRAM_CHAT_ID_ERROR_MESSAGE = "Transaction records with telegram chat Id '%s' not found";
 
+    private static final ZoneOffset MINSK_TIME = ZoneOffset.of("+03:00");
+
     private TransactionRecordRepository transactionRecordRepository;
     private TransactionRecordValidFieldsMapper transactionRecordValidFieldsMapper;
 
@@ -40,7 +43,8 @@ public class DefaultTransactionRecordService implements TransactionRecordService
         requireNonNull(transactionRecord, NULL_TRANSACTION_RECORD_ERROR_MESSAGE);
 
         if (isNull(transactionRecord.getDate())) {
-            transactionRecord.setDate(new Date());
+            var minskDate = LocalDateTime.now(MINSK_TIME).toInstant(ZoneOffset.UTC);
+            transactionRecord.setDate(Date.from(minskDate));
         }
 
         return transactionRecordRepository.save(transactionRecord);

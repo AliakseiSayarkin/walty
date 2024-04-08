@@ -7,7 +7,7 @@ import com.walty.currency.web.dto.CurrencyDTO
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
-import static com.walty.currency.Currency.USD
+import static com.walty.currency.config.Currency.USD
 
 @SpringBootTest
 class CurrencyExchangeControllerUnitTest extends Specification {

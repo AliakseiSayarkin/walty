@@ -1,6 +1,6 @@
 package com.walty.currency.service.model;
 
-import com.walty.currency.Currency;
+import com.walty.currency.config.Currency;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

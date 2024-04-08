@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
-import static com.walty.currency.Currency.USD
+import static com.walty.currency.config.Currency.USD
 
 @SpringBootTest
 class CurrencyModelConverterUnitTest extends Specification {
