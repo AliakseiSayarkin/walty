@@ -4,18 +4,7 @@ server:
 spring:
   application:
     name: transaction-record-service
-  data:
-    mongodb:
-      port: 8103
-      host: transaction-record-service_db
-      database: transaction-record-db
-      uri: mongodb://transaction-record-service_db:8103/transaction-record-db?authSource=admin
-
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: http://discovery-service:8102/eureka/
-      links:
-        - discovery-service
+  profiles:
+    active: prod
+  config:
+    import: http://config-service:8106/${spring.application.name}-${spring.profiles.active}.yml

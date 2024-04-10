@@ -6,6 +6,7 @@ import com.walty.telegram.web.telegram.command.impl.*;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ import java.util.EnumMap;
 import java.util.Map;
 
 @Getter
+@RefreshScope
 @Configuration
 public class TelegramBotServiceConfig {
 
