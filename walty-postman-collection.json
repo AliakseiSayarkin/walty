@@ -1,0 +1,571 @@
+{
+  "info": {
+    "_postman_id": "d80b81cd-18b0-4ff1-b5ef-6536715d53ae",
+    "name": "Walty",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32552230"
+  },
+  "item": [
+    {
+      "name": "Currency Exchange Service",
+      "item": [
+        {
+          "name": "Currency Exchange API",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://open.er-api.com/v6/latest/USD",
+              "protocol": "https",
+              "host": [
+                "open",
+                "er-api",
+                "com"
+              ],
+              "path": [
+                "v6",
+                "latest",
+                "USD"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Convert BYN to USD",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"code\" : \"BYN\",\n    \"value\" : 100\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8101/v1/currency/exchange/USD",
+              "host": [
+                "localhost"
+              ],
+              "port": "8101",
+              "path": [
+                "v1",
+                "currency",
+                "exchange",
+                "USD"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Convert USD to BYN",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"code\" : \"USD\",\n    \"value\" : 100\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8101/v1/currency/exchange/BYN",
+              "host": [
+                "localhost"
+              ],
+              "port": "8101",
+              "path": [
+                "v1",
+                "currency",
+                "exchange",
+                "BYN"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Convert BYN to RUB",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"code\" : \"BYN\",\n    \"value\" : 100\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8101/v1/currency/exchange/RUB",
+              "host": [
+                "localhost"
+              ],
+              "port": "8101",
+              "path": [
+                "v1",
+                "currency",
+                "exchange",
+                "RUB"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Currency values for BYN",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"code\" : \"BYN\",\n    \"value\" : 100\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8101/v1/currency/values",
+              "host": [
+                "localhost"
+              ],
+              "port": "8101",
+              "path": [
+                "v1",
+                "currency",
+                "values"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Currency values for USD",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"code\" : \"USD\",\n    \"value\" : 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8101/v1/currency/values",
+              "host": [
+                "localhost"
+              ],
+              "port": "8101",
+              "path": [
+                "v1",
+                "currency",
+                "values"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Currency values for EUR",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"code\" : \"EUR\",\n    \"value\" : 100\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8101/v1/currency/values",
+              "host": [
+                "localhost"
+              ],
+              "port": "8101",
+              "path": [
+                "v1",
+                "currency",
+                "values"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Refresh Config Properties",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "localhost:8101/actuator/refresh",
+              "host": [
+                "localhost"
+              ],
+              "port": "8101",
+              "path": [
+                "actuator",
+                "refresh"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transaction Record Service",
+      "item": [
+        {
+          "name": "Get Transaction Records For This Month",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8104/v1/transaction/date/current/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "8104",
+              "path": [
+                "v1",
+                "transaction",
+                "date",
+                "current",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Transaction Records For Date",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8104/v1/transaction/date/current/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "8104",
+              "path": [
+                "v1",
+                "transaction",
+                "date",
+                "current",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Transaction Summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8104/v1/transaction/date/2023-02-10T00:00:00/summary/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "8104",
+              "path": [
+                "v1",
+                "transaction",
+                "date",
+                "2023-02-10T00:00:00",
+                "summary",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Transaction Record By Telegram Chat Id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:8104/v1/transaction/telegram/chat/id/2",
+              "host": [
+                "localhost"
+              ],
+              "port": "8104",
+              "path": [
+                "v1",
+                "transaction",
+                "telegram",
+                "chat",
+                "id",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Transaction Record By Id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:8104/v1/transaction/id/65d1343f285ad11c92b703f0",
+              "host": [
+                "localhost"
+              ],
+              "port": "8104",
+              "path": [
+                "v1",
+                "transaction",
+                "id",
+                "65d1343f285ad11c92b703f0"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Transaction Record",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"telegramChatId\": \"2\",\n    \"USD\":\"200\",\n    \"EUR\":\"400\",\n    \"BYN\":\"100\",\n    \"RUB\":\"300\",\n    \"description\": \"description\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8104/v1/transaction",
+              "host": [
+                "localhost"
+              ],
+              "port": "8104",
+              "path": [
+                "v1",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Transaction Record Copy",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": \"65d13447285ad11c92b703f1\",\n    \"telegramChatId\": \"2\",\n    \"BYN\":\"666\",\n    \"USD\":\"200\",\n    \"RUB\":\"300\",\n    \"EUR\":\"400\",\n    \"description\": \"description\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8104/v1/transaction",
+              "host": [
+                "localhost"
+              ],
+              "port": "8104",
+              "path": [
+                "v1",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Refresh Properties For Transaction Service",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "localhost:8104/actuator/refresh",
+              "host": [
+                "localhost"
+              ],
+              "port": "8104",
+              "path": [
+                "actuator",
+                "refresh"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Config Service",
+      "item": [
+        {
+          "name": "Configuration Properties For Discovery Service",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8106/discovery-service-prod.yml",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8106",
+              "path": [
+                "discovery-service-prod.yml"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Configuration Properties For Transaction Record Service",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8106/transaction-record-service-prod.yml",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8106",
+              "path": [
+                "transaction-record-service-prod.yml"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Configuration Properties For Telegram Bot Service",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8106/telegram-bot-service-prod.yml",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8106",
+              "path": [
+                "telegram-bot-service-prod.yml"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Configuration Properties For Currency Exchange Service",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8106/currency-exchange-service-prod.yml",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8106",
+              "path": [
+                "currency-exchange-service-prod.yml"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Discovery Service",
+      "item": [
+        {
+          "name": "Refresh Properties For DiscoveryService",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "localhost:8102/actuator/refresh",
+              "host": [
+                "localhost"
+              ],
+              "port": "8102",
+              "path": [
+                "actuator",
+                "refresh"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Telegram Bot Service",
+      "item": [
+        {
+          "name": "Refresh Properties For Telegram Bot Service",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "localhost:8105/actuator/refresh",
+              "host": [
+                "localhost"
+              ],
+              "port": "8105",
+              "path": [
+                "actuator",
+                "refresh"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
