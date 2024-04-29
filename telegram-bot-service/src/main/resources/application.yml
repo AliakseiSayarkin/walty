@@ -9,4 +9,4 @@ spring:
   profiles:
     active: prod
   config:
-    import: http://config-service:8106/${spring.application.name}-${spring.profiles.active}.yml\
+    import: http://config-service:8106/${spring.application.name}-${spring.profiles.active}.yml
