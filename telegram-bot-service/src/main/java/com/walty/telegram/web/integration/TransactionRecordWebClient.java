@@ -18,11 +18,11 @@ import java.util.function.Function;
 @AllArgsConstructor
 public class TransactionRecordWebClient {
 
-    private WebClient.Builder webClientBuilder;
+    private WebClient.Builder loadBalancedWebClientBuilder;
     private TelegramBotServiceConfig telegramBotServiceConfig;
 
     public List<TransactionRecordDTO> getTransactionRecordsUri(String telegramChatId) {
-        return webClientBuilder.build()
+        return loadBalancedWebClientBuilder.build()
                 .method(HttpMethod.GET)
                 .uri(createGetTransactionRecordsUri(telegramChatId))
                 .retrieve()
@@ -39,7 +39,7 @@ public class TransactionRecordWebClient {
     }
 
     public TransactionRecordDTO saveTransactionRecord(String telegramChatId, TransactionRecordDTO transactionRecord) {
-        return webClientBuilder.build()
+        return loadBalancedWebClientBuilder.build()
                 .method(HttpMethod.POST)
                 .uri(createSaveTransactionRecordUri(telegramChatId))
                 .body(Mono.just(transactionRecord), TransactionRecordDTO.class)
@@ -57,7 +57,7 @@ public class TransactionRecordWebClient {
     }
 
     public void deleteAllTransactionRecord(String telegramChatId) {
-        webClientBuilder.build()
+        loadBalancedWebClientBuilder.build()
                 .method(HttpMethod.DELETE)
                 .uri(createDeleteAllTransactionRecordsUri(telegramChatId))
                 .retrieve()
@@ -74,7 +74,7 @@ public class TransactionRecordWebClient {
     }
 
     public void deleteTransactionRecordById(String id) {
-        webClientBuilder.build()
+        loadBalancedWebClientBuilder.build()
                 .method(HttpMethod.DELETE)
                 .uri(createDeleteTransactionRecordByIdUri(id))
                 .retrieve()

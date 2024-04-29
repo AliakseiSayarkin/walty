@@ -17,11 +17,11 @@ import java.util.function.Function;
 @AllArgsConstructor
 public class CurrencyExchangeWebClient {
 
-    private WebClient.Builder webClientBuilder;
+    private WebClient.Builder loadBalancedWebClientBuilder;
     private TelegramBotServiceConfig telegramBotServiceConfig;
 
     public CurrencyValuesDTO getCurrencyValues(CurrencyDTO currencyToSell) {
-        return webClientBuilder.build()
+        return loadBalancedWebClientBuilder.build()
                 .method(HttpMethod.GET)
                 .uri(getCurrencyValuesUri())
                 .body(Mono.just(currencyToSell), CurrencyDTO.class)
