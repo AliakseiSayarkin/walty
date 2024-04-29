@@ -1,6 +1,27 @@
 version: '3.1'
 
+networks:
+  backend:
+
+volumes:
+  transaction-record-service_data:
+
 services:
+  config-service:
+    container_name: config-service
+    hostname: config-service
+    build:
+      context: ./config-service
+    ports:
+      - "8106:8106"
+    networks:
+      - backend
+    healthcheck:
+      test: "curl --fail --silent config-service:8106/actuator/health | grep UP || exit 1"
+      interval: 2s
+      timeout: 1s
+      retries: 100
+
   discovery-service:
     container_name: discovery-service
     hostname: discovery-service
@@ -17,7 +38,7 @@ services:
       test: "curl --fail --silent discovery-service:8102/actuator/health | grep UP || exit 1"
       interval: 2s
       timeout: 1s
-      retries: 10
+      retries: 100
 
   currency-exchange-service:
     build:
@@ -35,7 +56,7 @@ services:
       test: "curl --fail --silent currency-exchange-service:8101/actuator/health | grep UP || exit 1"
       interval: 2s
       timeout: 1s
-      retries: 10
+      retries: 100
 
   transaction-record-service_db:
     image: mongo:5.0.2
@@ -65,7 +86,7 @@ services:
       test: "curl --fail --silent transaction-record-service:8104/actuator/health | grep UP || exit 1"
       interval: 2s
       timeout: 1s
-      retries: 10
+      retries: 100
 
   telegram-bot-service:
     hostname: telegram-bot-service
@@ -86,26 +107,4 @@ services:
       test: "curl --fail --silent telegram-bot-service:8105/actuator/health | grep UP || exit 1"
       interval: 2s
       timeout: 1s
-      retries: 10
-
-  config-service:
-    container_name: config-service
-    hostname: config-service
-    build:
-      context: ./config-service
-    ports:
-      - "8106:8106"
-    networks:
-      - backend
-    healthcheck:
-      test: "curl --fail --silent config-service:8106/actuator/health | grep UP || exit 1"
-      interval: 2s
-      timeout: 1s
-      retries: 10
-
-networks:
-  backend:
-    driver: bridge
-
-volumes:
-  transaction-record-service_data:
+      retries: 100
