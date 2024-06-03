@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc
 import spock.lang.Specification
 
 import static com.walty.currency.config.Currency.*
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
@@ -43,7 +43,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         var currencyToSell = new CurrencyDTO(BYN.toString(), VALUE)
 
         and:
-        String json = mvc.perform(get(CONVERT_CURRENCY_URL + USD.toString())
+        String json = mvc.perform(post(CONVERT_CURRENCY_URL + USD.toString())
                 .contentType(MediaType.APPLICATION_JSON).content(asJsonString(currencyToSell)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -60,7 +60,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         var currencyToSell = new CurrencyDTO(BYN.toString(), VALUE)
 
         and:
-        String json = mvc.perform(get(CONVERT_CURRENCY_URL + RUB.toString())
+        String json = mvc.perform(post(CONVERT_CURRENCY_URL + RUB.toString())
                 .contentType(MediaType.APPLICATION_JSON).content(asJsonString(currencyToSell)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -77,7 +77,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         var currencyToSell = new CurrencyDTO(BYN.toString(), VALUE)
 
         and:
-        String json = mvc.perform(get(CONVERT_CURRENCY_URL + EUR.toString())
+        String json = mvc.perform(post(CONVERT_CURRENCY_URL + EUR.toString())
                 .contentType(MediaType.APPLICATION_JSON).content(asJsonString(currencyToSell)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -94,7 +94,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         var currencyToSell = new CurrencyDTO(USD.toString(), VALUE)
 
         and:
-        String json = mvc.perform(get(GET_CURRENCY_VALUES_URL)
+        String json = mvc.perform(post(GET_CURRENCY_VALUES_URL)
                 .contentType(MediaType.APPLICATION_JSON).content(asJsonString(currencyToSell)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -113,7 +113,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         var currencyToSell = new CurrencyDTO(EUR.toString(), VALUE)
 
         and:
-        String json = mvc.perform(get(GET_CURRENCY_VALUES_URL)
+        String json = mvc.perform(post(GET_CURRENCY_VALUES_URL)
                 .contentType(MediaType.APPLICATION_JSON).content(asJsonString(currencyToSell)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -132,7 +132,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         var currencyToSell = new CurrencyDTO(BYN.toString(), VALUE)
 
         and:
-        String json = mvc.perform(get(GET_CURRENCY_VALUES_URL)
+        String json = mvc.perform(post(GET_CURRENCY_VALUES_URL)
                 .contentType(MediaType.APPLICATION_JSON).content(asJsonString(currencyToSell)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -151,7 +151,7 @@ class CurrencyExchangeControllerIntegrationTest extends Specification {
         var currencyToSell = new CurrencyDTO(RUB.toString(), VALUE)
 
         and:
-        String json = mvc.perform(get(GET_CURRENCY_VALUES_URL)
+        String json = mvc.perform(post(GET_CURRENCY_VALUES_URL)
                 .contentType(MediaType.APPLICATION_JSON).content(asJsonString(currencyToSell)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))

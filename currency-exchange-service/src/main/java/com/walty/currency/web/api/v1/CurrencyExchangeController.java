@@ -19,13 +19,13 @@ public class CurrencyExchangeController {
 
     private final CurrencyExchangeFacade currencyExchangeFacade;
 
-    @GetMapping("/exchange/{currencyToBuyCode}")
+    @PostMapping("/exchange/{currencyToBuyCode}")
     public ResponseEntity<CurrencyDTO> exchangeCurrency(@RequestBody @Valid CurrencyDTO currencyToSell,
                                                         @PathVariable @ValidCurrency String currencyToBuyCode) {
         return ResponseEntity.of(currencyExchangeFacade.exchangeCurrency(currencyToSell, currencyToBuyCode));
     }
 
-    @GetMapping("/values")
+    @PostMapping("/values")
     public ResponseEntity<CurrencyValuesDTO> createCurrencyValues(@RequestBody @Valid CurrencyDTO currencyToSell) {
         return ResponseEntity.of(currencyExchangeFacade.createCurrencyValues(currencyToSell));
     }

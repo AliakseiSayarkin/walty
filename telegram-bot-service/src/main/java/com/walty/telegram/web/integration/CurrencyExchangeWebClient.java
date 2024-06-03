@@ -22,7 +22,7 @@ public class CurrencyExchangeWebClient {
 
     public CurrencyValuesDTO getCurrencyValues(CurrencyDTO currencyToSell) {
         return loadBalancedWebClientBuilder.build()
-                .method(HttpMethod.GET)
+                .method(HttpMethod.POST)
                 .uri(getCurrencyValuesUri())
                 .body(Mono.just(currencyToSell), CurrencyDTO.class)
                 .retrieve()
