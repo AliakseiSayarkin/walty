@@ -101,6 +101,8 @@ services:
         condition: service_healthy
       currency-exchange-service:
         condition: service_healthy
+      transaction-record-service:
+        condition: service_healthy
       config-service:
         condition: service_healthy
     healthcheck:

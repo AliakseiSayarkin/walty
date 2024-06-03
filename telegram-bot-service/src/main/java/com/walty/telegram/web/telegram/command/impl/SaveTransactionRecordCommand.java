@@ -7,6 +7,7 @@ import com.walty.telegram.web.dto.CurrencyValuesDTO;
 import com.walty.telegram.web.dto.TransactionRecordDTO;
 import com.walty.telegram.web.integration.CurrencyExchangeWebClient;
 import com.walty.telegram.web.integration.TransactionRecordWebClient;
+import com.walty.telegram.web.telegram.command.aspect.HandleExceptions;
 import com.walty.telegram.web.telegram.command.validator.CommandValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -34,6 +35,7 @@ public class SaveTransactionRecordCommand implements Command {
     private CommandValidator saveTransactionRecordCommandValidator;
 
     @Override
+    @HandleExceptions
     public String execute(long telegramChatId, String input) {
         Objects.requireNonNull(input, "Parameter 'input' cannot be null");
 

@@ -3,6 +3,7 @@ package com.walty.telegram.web.telegram.command.impl;
 import com.walty.telegram.service.ParsingService;
 import com.walty.telegram.web.integration.TransactionRecordWebClient;
 import com.walty.telegram.web.telegram.command.Command;
+import com.walty.telegram.web.telegram.command.aspect.HandleExceptions;
 import com.walty.telegram.web.telegram.command.validator.CommandValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,7 @@ public class DeleteTransactionRecordByIdCommand implements Command {
     private CommandValidator deleteTransactionRecordByIdCommandValidator;
 
     @Override
+    @HandleExceptions
     public String execute(long telegramChatId, String input) {
         Objects.requireNonNull(input, "Parameter 'input' cannot be null");
 
