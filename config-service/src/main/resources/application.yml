@@ -10,6 +10,7 @@ spring:
         git:
           default-label: master
           uri: https://github.com/AliakseiSayarkin/walty-config-properties
+          skip-ssl-validation: true
 
 management:
   endpoints:
