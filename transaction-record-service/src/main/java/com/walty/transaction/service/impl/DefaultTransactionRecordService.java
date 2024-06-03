@@ -6,6 +6,7 @@ import com.walty.transaction.service.model.TransactionRecordModel;
 import com.walty.transaction.service.mapper.TransactionRecordValidFieldsMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.*;
 import java.util.Date;
@@ -31,6 +32,7 @@ public class DefaultTransactionRecordService implements TransactionRecordService
     private TransactionRecordValidFieldsMapper transactionRecordValidFieldsMapper;
 
     @Override
+    @Transactional(readOnly = true)
     public List<TransactionRecordModel> getTransactionRecordsByTelegramChatIdAndDate(String telegramChatId, Date date) {
         requireNonNull(telegramChatId, NULL_TELEGRAM_CHAT_ID_ERROR_MESSAGE);
         requireNonNull(date, NULL_DATE_ERROR_MESSAGE);
@@ -39,6 +41,7 @@ public class DefaultTransactionRecordService implements TransactionRecordService
     }
 
     @Override
+    @Transactional
     public TransactionRecordModel saveTransactionRecord(TransactionRecordModel transactionRecord) {
         requireNonNull(transactionRecord, NULL_TRANSACTION_RECORD_ERROR_MESSAGE);
 
@@ -51,6 +54,7 @@ public class DefaultTransactionRecordService implements TransactionRecordService
     }
 
     @Override
+    @Transactional
     public void deleteTransactionRecordById(String transactionRecordId) {
         requireNonNull(transactionRecordId, NULL_TRANSACTION_RECORD_ID_ERROR_MESSAGE);
 
@@ -62,6 +66,7 @@ public class DefaultTransactionRecordService implements TransactionRecordService
     }
 
     @Override
+    @Transactional
     public void deleteTransactionRecordsByTelegramChatId(String telegramChatId) {
         requireNonNull(telegramChatId, NULL_TELEGRAM_CHAT_ID_ERROR_MESSAGE);
 
@@ -73,6 +78,7 @@ public class DefaultTransactionRecordService implements TransactionRecordService
     }
 
     @Override
+    @Transactional
     public TransactionRecordModel updateTransactionRecord(TransactionRecordModel transactionRecord) {
         requireNonNull(transactionRecord, NULL_TRANSACTION_RECORD_ERROR_MESSAGE);
 
