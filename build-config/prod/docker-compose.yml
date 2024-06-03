@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.9'
 
 networks:
   backend:
@@ -10,23 +10,21 @@ services:
   config-service:
     container_name: config-service
     hostname: config-service
-    build:
-      context: ./config-service
+    image: aliakseisayarkin/walty-config-service:latest
     ports:
       - "8106:8106"
     networks:
       - backend
     healthcheck:
       test: "curl --fail --silent config-service:8106/actuator/health | grep UP || exit 1"
-      interval: 2s
+      interval: 5s
       timeout: 1s
-      retries: 100
+      retries: 200
 
   discovery-service:
     container_name: discovery-service
     hostname: discovery-service
-    build:
-      context: ./discovery-service
+    image: aliakseisayarkin/walty-discovery-service:latest
     ports:
       - "8102:8102"
     networks:
@@ -36,13 +34,12 @@ services:
         condition: service_healthy
     healthcheck:
       test: "curl --fail --silent discovery-service:8102/actuator/health | grep UP || exit 1"
-      interval: 2s
+      interval: 5s
       timeout: 1s
-      retries: 100
+      retries: 200
 
   currency-exchange-service:
-    build:
-      context: ./currency-exchange-service
+    image: aliakseisayarkin/walty-currency-exchange-service:latest
     ports:
       - "8101:8101"
     networks:
@@ -54,9 +51,9 @@ services:
         condition: service_healthy
     healthcheck:
       test: "curl --fail --silent currency-exchange-service:8101/actuator/health | grep UP || exit 1"
-      interval: 2s
+      interval: 5s
       timeout: 1s
-      retries: 100
+      retries: 200
 
   transaction-record-service_db:
     image: mongo:5.0.2
@@ -69,8 +66,7 @@ services:
       - backend
 
   transaction-record-service:
-    build:
-      context: ./transaction-record-service
+    image: aliakseisayarkin/walty-transaction-record-service:latest
     ports:
       - "8104:8104"
     networks:
@@ -84,27 +80,23 @@ services:
         condition: service_healthy
     healthcheck:
       test: "curl --fail --silent transaction-record-service:8104/actuator/health | grep UP || exit 1"
-      interval: 2s
+      interval: 5s
       timeout: 1s
-      retries: 100
+      retries: 200
 
   telegram-bot-service:
+    image: aliakseisayarkin/walty-telegram-bot-service:latest
     hostname: telegram-bot-service
-    build:
-      context: ./telegram-bot-service
     ports:
       - "8105:8105"
     networks:
       - backend
     depends_on:
-      discovery-service:
-        condition: service_healthy
-      currency-exchange-service:
-        condition: service_healthy
-      config-service:
-        condition: service_healthy
+      - discovery-service
+      - currency-exchange-service
+      - config-service
     healthcheck:
       test: "curl --fail --silent telegram-bot-service:8105/actuator/health | grep UP || exit 1"
-      interval: 2s
+      interval: 5s
       timeout: 1s
-      retries: 100
+      retries: 200
